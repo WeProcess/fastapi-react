@@ -7,6 +7,8 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Login from './components/Login.js'
 import Profile from './components/Profile.js'
 import Dashboard from './components/Dashboard.js'
+import User_Type from './components/User_Type.js'
+
 import {RequireToken} from './components/Auth.js'
  
 function App() {
@@ -28,11 +30,21 @@ function App() {
                 </RequireToken>
               }
             />
+
             <Route
               path="/dashboard"
               element={
                 <RequireToken>
                   <Dashboard />
+                </RequireToken>
+              }
+            />
+
+            <Route
+              path="/usertype"
+              element={
+                <RequireToken>
+                  <User_Type />
                 </RequireToken>
               }
             />

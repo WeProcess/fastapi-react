@@ -7,25 +7,32 @@ import {fetchToken} from './Auth.js';
  
 export default function Profile(){
     const navigate = useNavigate();
-    const [userdata,setUserData] = useState('');
-   
-    async function getUserData() {
-        try {
+    const [usertypedata, setUsertypeData] = useState([]);
+    const [userdata, setuserdata] = useState("");
+    
+    useEffect(() => {
+        getUsertypeData();
+    }, []);
 
+    async function getUsertypeData() {
+        try {
             var token = fetchToken();
             if(token)
             {
                 axios({
                     method: 'get',
                     responseType: 'json',
-                    url: 'http://localhost:8000/dashboard',
+                    url: 'http://localhost:8000/getUserType',
                     headers: {
                         'Content-Type': "application/json",
                         Authorization: "Bearer " + token,
                     }
                 })
                 .then(function (response) {
-                    setUserData(response.data["current_user"].full_name);
+                    setUsertypeData(response.data["user_type"]);
+                    setuserdata(response.data["current_user"].full_name);
+                     
+                    // console.log(response.data);
                     
                 })
                 .catch(function (error) {
@@ -48,9 +55,6 @@ export default function Profile(){
         alert("Error in try." + error);
       }
     };
-    useEffect(() => {
-        getUserData();
-    }, []);
     return(
         <>
     
@@ -61,8 +65,30 @@ export default function Profile(){
             </div>
         </div>
         </nav>
+        <div>
+                <h2>Hi, {userdata}</h2>
+            </div>
             <div>
-                <h2>Hi, {userdata} this is your Dashboard</h2>
+                <table className="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                    <th>Sr</th>
+                    <th>User Type</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {usertypedata.map((usertypedata, index) => (
+                            <tr key={usertypedata.id}>
+                                <td>
+                                    {index+1}
+                                </td>
+                                <td>
+                                    {usertypedata.userType}
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
              
             

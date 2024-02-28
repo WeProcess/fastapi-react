@@ -51,6 +51,8 @@ export default function Login(){
     }
   return (
     <div>
+      <div className="h-100 gradient-custom">
+    <div className="container"></div>
       <div className="mask d-flex align-items-center h-100 gradient-custom-3">
         <div className="container h-100">
             <div className="row d-flex justify-content-center align-items-center h-100">
@@ -90,6 +92,8 @@ export default function Login(){
             </div>
         </div>
       </div>
-    </div>
+      </div>
+      </div>
+      
   );
 }
