@@ -53,17 +53,23 @@ export default function Profile(){
     }, []);
     return(
         <>
-    
+            <div>
+                <h2>Hi, {userdata}</h2>
+            </div>
             <nav className="navbar bg-primary">
             <div className="container">
             <div>
-                <Link to="/profile" className="btn btn-success">Profile</Link> | <Link to="/dashboard" className="btn btn-success">Dashboard</Link>  | <Link to="/usertype" className="btn btn-success">User Type</Link> 
+                <Link to="/profile" className="btn btn-success">Profile</Link> |&nbsp;
+                <Link to="/dashboard" className="btn btn-success">Dashboard</Link> |&nbsp;
+                <Link to="/usertype" className="btn btn-success">User Type</Link> |&nbsp;
+                <Link to="/userteam" className="btn btn-success">User Team</Link> |&nbsp;
+                <Link to="/user" className="btn btn-success">User</Link> |&nbsp;
+                <Link to="/matrix" className="btn btn-success">Matrix</Link> |&nbsp;
+                <Link to="/email" className="btn btn-success">Email</Link>
             </div>
         </div>
         </nav>
-            <div>
-                <h2>Hi, {userdata} this is your Dashboard</h2>
-            </div>
+            
              
             
             </>

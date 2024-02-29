@@ -3,33 +3,36 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import {useNavigate, Link} from "react-router-dom";
 import {fetchToken} from './Auth.js';
+
  
 export default function Profile(){
     const navigate = useNavigate();
-    const [userdata,setUserData] = useState('');
-    const signOut = () => {
-        localStorage.removeItem('karmaglobaltech')
-        navigate("/");
-    };
+    const [usertypedata, setUsertypeData] = useState([]);
+    const [userdata, setuserdata] = useState("");
     
-   
-    async function getUserData() {
-        try {
+    useEffect(() => {
+        getUsertypeData();
+    }, []);
 
+    async function getUsertypeData() {
+        try {
             var token = fetchToken();
             if(token)
             {
                 axios({
                     method: 'get',
                     responseType: 'json',
-                    url: 'http://localhost:8000/dashboard',
+                    url: 'http://localhost:8000/getUserTeam',
                     headers: {
                         'Content-Type': "application/json",
                         Authorization: "Bearer " + token,
                     }
                 })
                 .then(function (response) {
-                    setUserData(response.data["current_user"].full_name);
+                    setUsertypeData(response.data["user_team"]);
+                    setuserdata(response.data["current_user"].full_name);
+                     
+                    console.log(usertypedata);
                     
                 })
                 .catch(function (error) {
@@ -52,16 +55,12 @@ export default function Profile(){
         alert("Error in try." + error);
       }
     };
-    useEffect(() => {
-        getUserData();
-    }, []);
     return(
-        
         <>
-        <div>
+            <div>
                 <h2>Hi, {userdata}</h2>
             </div>
-        <nav className="navbar bg-primary">
+            <nav className="navbar bg-primary">
             <div className="container">
             <div>
                 <Link to="/profile" className="btn btn-success">Profile</Link> |&nbsp;
@@ -74,13 +73,31 @@ export default function Profile(){
             </div>
         </div>
         </nav>
-            <div style = {{marginTop: 20 }}>
-                <div>
-                    <button type = 'button' className="btn btn-success" onClick= {signOut}>Sign Out</button>
-                </div>
+            
+            <div>
+                <table className="table table-striped table-bordered mt-4 table-hover">
+                    <thead>
+                    <tr>
+                    <th>Sr</th>
+                    <th>User Team</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {usertypedata.map((usertypedata, index) => (
+                            <tr key={usertypedata.id}>
+                                <td>
+                                    {index+1}
+                                </td>
+                                <td>
+                                    {usertypedata.userTeam}
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
              
-        
-        </>
+            
+            </>
     )
 }

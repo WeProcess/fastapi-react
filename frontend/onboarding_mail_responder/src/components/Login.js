@@ -71,7 +71,7 @@ export default function Login(){
                 <form>
                    
                   <div className="form-outline mb-4">
-                    <label className="form-label">Your User Name</label>
+                    <label className="form-label">Your Email</label>
                     <input type="text" className="form-control form-control-lg" name="username" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
                   </div>
                    

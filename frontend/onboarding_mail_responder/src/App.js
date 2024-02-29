@@ -7,7 +7,11 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Login from './components/Login.js'
 import Profile from './components/Profile.js'
 import Dashboard from './components/Dashboard.js'
-import User_Type from './components/User_Type.js'
+import UserType from './components/User_Type.js'
+import UserTeam from './components/User_Team.js'
+import User from './components/User.js'
+import Matrix from './components/Matrix.js'
+import Email from './components/Email.js'
 
 import {RequireToken} from './components/Auth.js'
  
@@ -44,10 +48,47 @@ function App() {
               path="/usertype"
               element={
                 <RequireToken>
-                  <User_Type />
+                  <UserType />
                 </RequireToken>
               }
             />
+
+            <Route
+              path="/userteam"
+              element={
+                <RequireToken>
+                  <UserTeam />
+                </RequireToken>
+              }
+            />
+
+            <Route
+              path="/user"
+              element={
+                <RequireToken>
+                  <User />
+                </RequireToken>
+              }
+            />
+
+            <Route
+              path="/matrix"
+              element={
+                <RequireToken>
+                  <Matrix />
+                </RequireToken>
+              }
+            />
+
+            <Route
+              path="/email"
+              element={
+                <RequireToken>
+                  <Email />
+                </RequireToken>
+              }
+            />
+            
             
         </Routes>
       </BrowserRouter>

@@ -104,28 +104,28 @@ async def deleteUser(id:int, db: db_dependency, current_user: User = Depends(get
 
 
 ################# matrix #################
-@app.get("/getmatrix", tags=["Matrix"])
+@app.get("/getMatrix", tags=["Matrix"])
 async def getmatrix(db: db_dependency, current_user: User = Depends(get_current_active_user)):
     return {"matrix" : matrix.getmatrix(db), "current_user" : current_user}
 
-@app.post("/addmatrix", tags=["Matrix"])
+@app.post("/addMatrix", tags=["Matrix"])
 async def addmatrix(ur: schema.MatrixBase, db: db_dependency, current_user: User = Depends(get_current_active_user)):
     return {"matrix" : matrix.addmatrix(ur, db), "current_user" : current_user}
 
-@app.put("/updatematrix", tags=["Matrix"])
+@app.put("/updateMatrix", tags=["Matrix"])
 async def updatematrix(id:int, ur: schema.MatrixBase, db: db_dependency, current_user: User = Depends(get_current_active_user)):
     return {"matrix" : matrix.updatematrix(id, ur, db), "current_user" : current_user}
 
-@app.delete("/deletematrix", tags=["Matrix"])
+@app.delete("/deleteMatrix", tags=["Matrix"])
 async def deletematrix(id:int, db: db_dependency, current_user: User = Depends(get_current_active_user)):
     return {"matrix" : matrix.deletematrix(id, db), "current_user" : current_user}
 
 
 ################# Email #################
-@app.get("/getemail", tags=["Email"])
+@app.get("/getEmail", tags=["Email"])
 async def getemail(db: db_dependency, current_user: User = Depends(get_current_active_user)):
     return {"email" : email.getemail(db), "current_user" : current_user}
 
-@app.post("/addemail", tags=["Email"])
+@app.post("/addEmail", tags=["Email"])
 async def addemail(email: schema.EmailBase, db: db_dependency, current_user: User = Depends(get_current_active_user)):
     return {"email" : email.addemail(email, db), "current_user" : current_user}
