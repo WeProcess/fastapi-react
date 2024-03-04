@@ -1,0 +1,18 @@
+.react-multi-email {
+    min-height: 200px;
+  }
+  
+  .react-multi-email div[data-tag] {
+    border-radius: 99px;
+    margin-bottom: 5px;
+  }
+  
+  .react-multi-email [data-tag] [data-tag-handle] {
+    padding: 5px;
+    font-size: 15px;
+  }
+  
+  .react-multi-email [data-tag] [data-tag-handle]:hover {
+    color: red;
+  }
+  
