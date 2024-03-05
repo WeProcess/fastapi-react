@@ -12,9 +12,6 @@ def addemail(email, db: db_dependency):
                        client_name = email.client_name, 
                        status_of_email=email.status_of_email,
                        )
-    
-    
-
     db.add(Email)
     db.commit()
     return {"message": "Email Added."}

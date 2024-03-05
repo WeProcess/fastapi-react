@@ -30,7 +30,7 @@ export default function Profile(){
                 })
                 .then(function (response) {
                     setUsertypeData(response.data["matrix"]);
-                    setuserdata(response.data["current_user"].full_name);
+                    setuserdata(response.data["current_user"]);
                      
                     console.log(response.data);
                     
@@ -58,7 +58,7 @@ export default function Profile(){
     return(
         <>
             <div>
-                <h2>Hi, {userdata}</h2>
+                <h2>Hi, {userdata.full_name}</h2>
             </div>
             <nav className="navbar bg-primary">
             <div className="container">

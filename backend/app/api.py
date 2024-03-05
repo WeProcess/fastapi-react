@@ -4,7 +4,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from database.database import engine
 from database.dependency import db_dependency
 from models import models, schema
-from app import userTeam, userType, user, matrix, email
+from app import userTeam, userType, user, matrix, email, dashboard
 from .login import *
 from scurity.scurity import ACCESS_TOKEN_EXPIRE_MINUTES, create_access_token, COOKIE_NAME
 from datetime import timedelta
@@ -49,7 +49,10 @@ async def login(db: db_dependency, form_data: OAuth2PasswordRequestForm = Depend
 ################# dashboard #################
 @app.get("/dashboard", tags=["Dashboard"])
 async def getdashboard(db: db_dependency, current_user: User = Depends(get_current_active_user)):
-    return {"current_user" : current_user}
+    # print(dashboard.getdashboard(db))
+    kao_user = dashboard.getKAO(db)
+    
+    return {"kao_user": kao_user,"current_user" : current_user}
 
 ################# userTeam #################
 @app.get("/getUserTeam", tags=["User Team"])
@@ -58,7 +61,7 @@ async def getUserTeam(db: db_dependency, current_user: User = Depends(get_curren
 
 @app.post("/addUserTeam", tags=["User Team"])
 async def addUserTeam(ut: schema.UserTeamBase, db: db_dependency, current_user: User = Depends(get_current_active_user)):
-    return {"user_team" : userTeam.addUserTeam(db), "current_user" : current_user}
+    return {"user_team" : userTeam.addUserTeam(ut, db), "current_user" : current_user}
 
 @app.put("/updateUserTeam", tags=["User Team"])
 async def updateUserTeam(id:int, ut: schema.UserTeamBase, db: db_dependency, current_user: User = Depends(get_current_active_user)):
@@ -88,7 +91,11 @@ async def deleteUserType(id:int, db: db_dependency, current_user: User = Depends
 ################# user #################
 @app.get("/getUser", tags=["User"])
 async def getUser(db: db_dependency, current_user: User = Depends(get_current_active_user)):
-    return {"user" : user.getUser(db), "current_user" : current_user}
+    user_var = user.getUser(db)
+    for auser_var in user_var:
+        print(auser_var.valuefile())
+
+    return {"user" : user_var, "current_user" : current_user}
 
 @app.post("/addUser", tags=["User"])
 async def addUser(ur: schema.UserInDB, db: db_dependency, current_user: User = Depends(get_current_active_user)):
@@ -101,7 +108,6 @@ async def updateUser(id:int, ur: schema.UserInDB, db: db_dependency, current_use
 @app.delete("/deleteUser", tags=["User"])
 async def deleteUser(id:int, db: db_dependency, current_user: User = Depends(get_current_active_user)):
     return {"user" : user.deleteUser(id, db), "current_user" : current_user}
-
 
 ################# matrix #################
 @app.get("/getMatrix", tags=["Matrix"])

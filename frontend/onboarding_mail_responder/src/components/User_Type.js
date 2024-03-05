@@ -8,7 +8,7 @@ import {fetchToken} from './Auth.js';
 export default function Profile(){
     const navigate = useNavigate();
     const [usertypedata, setUsertypeData] = useState([]);
-    const [userdata, setuserdata] = useState("");
+    const [userdata, setuserdata] = useState([]);
     
     useEffect(() => {
         getUsertypeData();
@@ -30,9 +30,9 @@ export default function Profile(){
                 })
                 .then(function (response) {
                     setUsertypeData(response.data["user_type"]);
-                    setuserdata(response.data["current_user"].full_name);
+                    setuserdata(response.data["current_user"]);
                      
-                    // console.log(response.data);
+                    console.log(response.data);
                     
                 })
                 .catch(function (error) {
@@ -58,7 +58,7 @@ export default function Profile(){
     return(
         <>
             <div>
-                <h2>Hi, {userdata}</h2>
+                <h2>Hi, {userdata.full_name}</h2>
             </div>
             <nav className="navbar bg-primary">
             <div className="container">

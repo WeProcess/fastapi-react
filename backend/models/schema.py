@@ -15,10 +15,10 @@ class UserTypeBase(BaseModel):
 
 class UserBase(BaseModel):
     full_name: str or None = None # type: ignore
-    email: str or None = None # type: ignore
+    email: str or None = None # type: ignore 
     disabled: bool or None = None # type: ignore   
-    userType : int
     userTeam : int
+    userType : int
 
 class UserInDB(UserBase):
     hashed_password : str

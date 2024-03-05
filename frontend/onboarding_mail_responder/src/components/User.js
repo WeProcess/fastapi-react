@@ -8,7 +8,7 @@ import {fetchToken} from './Auth.js';
 export default function Profile(){
     const navigate = useNavigate();
     const [usertypedata, setUsertypeData] = useState([]);
-    const [userdata, setuserdata] = useState("");
+    const [userdata, setuserdata] = useState([]);
     
     useEffect(() => {
         getUsertypeData();
@@ -30,9 +30,10 @@ export default function Profile(){
                 })
                 .then(function (response) {
                     setUsertypeData(response.data["user"]);
-                    setuserdata(response.data["current_user"].full_name);
+                    setuserdata(response.data["current_user"]);
                      
                     console.log(response.data["user"]);
+                    console.log(response.data["current_user"]);
                     
                 })
                 .catch(function (error) {
@@ -58,7 +59,7 @@ export default function Profile(){
     return(
         <>
             <div>
-                <h2>Hi, {userdata}</h2>
+                <h2>Hi, {userdata.full_name}</h2>
             </div>
             <nav className="navbar bg-primary">
             <div className="container">
@@ -79,7 +80,11 @@ export default function Profile(){
                     <thead>
                     <tr>
                     <th>Sr</th>
-                    <th>User Name</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Active</th>
+                    <th>Team</th>
+                    <th>Role</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -90,6 +95,19 @@ export default function Profile(){
                                 </td>
                                 <td>
                                     {usertypedata.full_name}
+                                </td>
+                                <td>
+                                    {usertypedata.email}
+                                </td>
+                                <td>
+                                    
+                                    {usertypedata.disabled ? 'Inactive' : 'Active'}
+                                </td>
+                                <td>
+                                    {usertypedata.usertm.userTeam}
+                                </td>
+                                <td>
+                                    {usertypedata.usertp.userType}
                                 </td>
                             </tr>
                         ))}
