@@ -1,5 +1,5 @@
 /backend/*/__pycache__/*.*
-/backend/db.sqlite
+# /backend/db.sqlite
 /env
 /frontend/onboarding_mail_responder/build
 /frontend/onboarding_mail_responder/node_modules
