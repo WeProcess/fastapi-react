@@ -27,15 +27,90 @@
 .App-link {
   color: #61dafb;
 }
+/* body {
+  margin: 0;
+  padding: 0;
+  background-image: url(http://localhost:3001/static/media/login_background.35ea7f9….jpg);
+  background-position: center;
+  background-size: cover;
+  height: 75vh;
+  width: auto;
+} */
 
-#react-js\myreactdev\src\App.css
-.card {
+#react-js\myreactdev\src\App.css .card {
   border-radius: 15px;
 }
 .gradient-custom {
-  background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
+  margin: 0;
+  padding: 0;
+  background-image: url(../assets/login_background.35ea7f96e6aeb03a3733.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 75vh;
+  width: auto;
 }
-
+.card {
+  width: 550px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(50px);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.card-1 {
+  position: absolute;
+  width: 80%;
+  height: 80vh;
+  margin: 100px auto 0;
+  padding: 50px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(50px);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.page-header {
+  color: #010101;
+}
+.text {
+  color: #010101;
+  font-weight: 500;
+  font-size: 20px;
+}
+/* form {
+  margin: 0 100px;
+} */
+.form-layout {
+  margin: 50px 100px 10px;
+  border: 2px solid #999;
+  border-radius: 15px;
+  padding: 50px;
+}
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.form-group input {
+  width: 40%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #9999;
+}
+.form-group input::placeholder {
+  color: #fff;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
