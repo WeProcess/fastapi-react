@@ -164,9 +164,9 @@ export default function Profile() {
                     />
                   </div>
 
-                  <div class="d-grid gap-2 col-6 mx-auto">
+                  <div className="d-grid gap-2 col-6 mx-auto">
                     <button
-                      class="btn btn-primary"
+                      className="btn btn-primary"
                       type="submit"
                       name="submit"
                       id="submit"
