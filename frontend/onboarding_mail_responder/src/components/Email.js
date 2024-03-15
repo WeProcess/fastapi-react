@@ -20,7 +20,7 @@ export default function Profile() {
         axios({
           method: "get",
           responseType: "json",
-          url: "http://localhost:8000/getEmail",
+          url: "http://localhost:8000/get_Email",
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + token,

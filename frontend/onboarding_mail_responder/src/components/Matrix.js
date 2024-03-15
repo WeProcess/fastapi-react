@@ -20,7 +20,7 @@ export default function Profile() {
         axios({
           method: "get",
           responseType: "json",
-          url: "http://localhost:8000/getMatrix",
+          url: "http://localhost:8000/get_Matrix",
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + token,

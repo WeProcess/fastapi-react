@@ -20,7 +20,7 @@ export default function Profile() {
         axios({
           method: "get",
           responseType: "json",
-          url: "http://localhost:8000/getUserTeam",
+          url: "http://localhost:8000/get_User_Team",
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + token,
