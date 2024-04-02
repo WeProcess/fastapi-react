@@ -133,5 +133,9 @@ async def get_email(db: db_dependency, current_user: User = Depends(get_current_
     return {"email" : email.getemail(db), "current_user" : current_user}
 
 @app.post("/addEmail", tags=["Email"])
-async def add_email(email: schema.EmailBase, db: db_dependency, current_user: User = Depends(get_current_active_user)):
-    return {"email" : email.addemail(email, db), "current_user" : current_user}
+async def add_email(SendEmailClient: schema.SendEmailClientBase, db: db_dependency, current_user: User = Depends(get_current_active_user)):
+    return {"email" : email.addemail(SendEmailClient, db), "current_user" : current_user}
+
+@app.post("/sendEmail", tags=["Email"])
+async def send_email(SendEmail: schema.SendEmailBase, current_user: User = Depends(get_current_active_user)):
+    return {"email" : email.send_email(SendEmail), "current_user" : current_user}

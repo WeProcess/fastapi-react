@@ -31,9 +31,16 @@ class MatrixBase(BaseModel):
     matrix_person_email : str or None = None # type: ignore  
     matrix_person_number : str or None = None # type: ignore  
 
-class EmailBase(BaseModel):
+class SendEmailClientBase(BaseModel):
     user_id : int
     matrix_id : int
     client_name : str or None = None # type: ignore  
     client_email : str or None = None # type: ignore  
     status_of_email : bool or None = None # type: ignore  
+
+
+class SendEmailBase(BaseModel):
+    sender : str or None = None # type: ignore  
+    receiver : str or None = None # type: ignore  
+    subject : str or None = None # type: ignore  
+    message : str or None = None # type: ignore  
